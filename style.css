@@ -1,0 +1,293 @@
+:root {
+   --lime-green: hsl(163, 72%, 41%);
+   --bright-red: hsl(356, 69%, 56%);
+   --facebook-color: hsl(208, 92%, 53%);
+   --twitter-color: hsl(203, 89%, 53%);
+   --instagram-color: linear-gradient(hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+   --youtube-color: hsl(348, 97%, 39%);
+}
+
+html {
+   box-sizing: border-box;
+   font-size: 62.5%;
+}
+
+* {
+   box-sizing: inherit;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background: var(--bg);
+   font-family: "Inter", sans-serif;
+   font-size: 1.6rem;
+   font-weight: 400;
+   line-height: 1.5;
+   position: relative;
+   transition: background 0.4s ease;
+}
+
+body::after {
+   content: "";
+   display: block;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 25rem;
+   background-color: var(--top-bg-pattern);
+   z-index: -1;
+}
+
+.light-theme {
+   --bg: hsl(0, 0%, 100%);
+   --top-bg-pattern: hsl(225, 100%, 98%);
+   --card-bg: hsl(227, 47%, 96%);
+   --text-primary-color: hsl(230, 17%, 14%);
+   --text-secondary-color: hsl(228, 12%, 44%);
+}
+
+.dark-theme {
+   --bg: hsl(230, 17%, 14%);
+   --top-bg-pattern: hsl(232, 19%, 15%);
+   --card-bg: hsl(228, 28%, 20%);
+   --text-primary-color: hsl(0, 0%, 100%);
+   --text-secondary-color: hsl(228, 34%, 66%);
+}
+
+.container {
+   width: 100%;
+   max-width: 1180px;
+   margin: 0 auto;
+   padding: 4rem 2rem;
+}
+
+/* Utilities */
+.primary-color {
+   color: var(--text-primary-color);
+}
+
+.secondary-color {
+   color: var(--text-secondary-color);
+}
+
+.font-bold {
+   font-weight: 700;
+}
+
+/* Header */
+header {
+   display: flex;
+   justify-content: space-between;
+}
+
+.headline h1 {
+   font-size: 2.8rem;
+}
+
+.headline p {
+   font-size: 1.5rem;
+}
+
+.switch {
+   font-size: 1.4rem;
+   user-select: none;
+   -webkit-user-select: none;
+   display: flex;
+   align-items: center;
+}
+
+.switch-toggle {
+   background: var(--text-secondary-color);
+   display: inline-block;
+   width: 5rem;
+   height: 2.4rem;
+   border-radius: 5rem;
+   margin-left: 1.5rem;
+   cursor: pointer;
+   position: relative;
+}
+
+.switch-toggle.active::after {
+   transform: translateY(-50%) translateX(0);
+}
+
+.switch-toggle:hover {
+   background: linear-gradient(
+      to right,
+      var(--facebook-color),
+      var(--lime-green)
+   );
+   transition: 0.3s ease;
+}
+
+.switch-toggle::after {
+   content: "";
+   width: 1.6rem;
+   height: 1.6rem;
+   border-radius: 50%;
+   background: var(--bg);
+   position: absolute;
+   top: 50%;
+   left: 4px;
+   transform: translateY(-50%) translateX(26px); /* translateX((50px - 8px) - 16px) */
+   transition: transform 0.4s ease;
+}
+
+/* Main dashboard */
+.dashboard {
+   margin-top: 4rem;
+}
+
+.row {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 3rem;
+}
+
+.card {
+   background: var(--card-bg);
+   border-radius: 5px;
+   padding: 2.5rem 3rem;
+   text-align: center;
+   overflow: hidden;
+}
+
+.card-bordered {
+   border-top: 5px solid transparent;
+}
+
+.card-fb {
+   border-color: var(--facebook-color);
+}
+
+.card-tw {
+   border-color: var(--twitter-color);
+}
+
+.card-ig {
+   background-image: var(--instagram-color);
+   background-repeat: no-repeat;
+   background-position: left top -5px;
+   background-size: 100% 5px;
+}
+
+.card-yt {
+   border-color: var(--youtube-color);
+}
+
+.card .account {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 4rem;
+}
+
+.card .account img {
+   margin-right: 1rem;
+   width: 2.5rem;
+}
+
+.card .account .username {
+   font-size: 1.4rem;
+   line-height: 0;
+}
+
+.card .total {
+   margin: 1.5rem 0 2.5rem;
+}
+
+.card .total h2 {
+   font-size: 5rem;
+   line-height: 1.2;
+}
+
+.card .total p {
+   text-transform: uppercase;
+   font-size: 1.4rem;
+   letter-spacing: 3px;
+}
+
+.card .stats {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.card .stats-up {
+   color: var(--lime-green);
+}
+
+.card .stats-down {
+   color: var(--bright-red);
+}
+
+.card .stats .today {
+   font-size: 1.3rem;
+   margin-left: 5px;
+   font-weight: bold;
+}
+
+/* Overview today */
+.overview {
+   margin-top: 4rem;
+}
+
+.overview h2 {
+   font-size: 2.3rem;
+   margin-bottom: 2rem;
+}
+
+.row-overview {
+   gap: 2rem 3rem;
+}
+
+.card-header,
+.card-body {
+   display: flex;
+   justify-content: space-between;
+}
+
+.card-header p {
+   color: var(--text-secondary-color);
+   font-size: 1.5rem;
+   font-weight: 700;
+}
+
+.card-body {
+   margin-top: 2rem;
+   align-items: baseline;
+}
+
+.card-body .total-insight {
+   font-size: 3rem;
+   color: var(--text-primary-color);
+}
+
+@media screen and (max-width: 768px) {
+   .headline h1 {
+      font-size: 2.5rem;
+   }
+}
+
+@media screen and (max-width: 576px) {
+   header {
+      flex-direction: column;
+   }
+
+   .headline {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--text-primary-color);
+   }
+
+   .switch {
+      padding-top: 2rem;
+   }
+}
+
+@media screen and (max-width: 414px) {
+   .switch {
+      align-self: flex-end;
+   }
+}
